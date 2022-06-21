@@ -16,6 +16,17 @@
     <input type="text" placeholder="task" name="task">
     <button type="submit">Submit</button>
   </form>
+  <h2>Tasks</h2>
+  <ul>
+    <% for(let i = 0; i < tasks.length; i++) {%>
+    <li class="task">
+      <span><%= tasks[i].name %></span>:
+      <span><%= tasks[i].task %></span>
+    </li>
+    <% } %>
+  </ul>
+
+
 </body>
 
 </html>

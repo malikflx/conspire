@@ -19,10 +19,10 @@ MongoClient.connect(connectionString, {
       app.get('/', (req, res) => {
         db.collection('tasks').find().toArray()
           .then(results => {
+            res.render('index.ejs', { tasks: results })
             console.log(results)
           })
           .catch(error => console.error(error))
-        res.render('index.ejs', {})
       })
 
       app.post('/tasks', (req, res) => {
