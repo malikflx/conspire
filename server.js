@@ -54,6 +54,19 @@ MongoClient.connect(connectionString, {
         .catch(error => console.error(error))
       })
 
+      app.delete('/tasks', (req, res) => {
+        tasksCollection.deleteOne(
+          { name: req.body.name },
+        )
+        .then(result => {
+          if (result.deletedCount === 0) {
+            return res.json('No task to delete')
+          }
+          res.json('Deleted selected task')
+        })
+        .catch(error => console.error(error))
+      })
+
       app.listen(4000, function() {
         console.log('listening on 4000')
       })
